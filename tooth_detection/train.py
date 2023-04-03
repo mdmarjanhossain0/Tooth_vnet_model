@@ -61,10 +61,10 @@ args = parser.parse_args()
 LOCAL = False
 if LOCAL:
     train_data_path = (
-        "E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/"
+        "E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i"
     )
 else:
-    train_data_path = "/home/pyuser/Test/AI/Tooth_vnet_model/data_i/"
+    train_data_path = "/home/pyuser/Test/AI/Tooth_vnet_model/data_i"
 # train_data_path = args.root_path
 snapshot_path = "../model/" + args.exp + "/ours_transformer"
 
