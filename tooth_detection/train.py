@@ -172,7 +172,8 @@ if __name__ == "__main__":
         print(epoch_num)
         print(trainloader)
         print(len(trainloader))
-        for i_batch, sampled_batch in enumerate(trainloader):
+        # for i_batch, sampled_batch in enumerate(trainloader):
+        for i_batch, sampled_batch in trainloader:
 
             print(i_batch)
 
