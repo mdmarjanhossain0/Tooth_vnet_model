@@ -170,6 +170,7 @@ if __name__ == "__main__":
 
         print(time1)
         print(epoch_num)
+        print(trainloader)
         for i_batch, sampled_batch in enumerate(trainloader):
 
             print(i_batch)
