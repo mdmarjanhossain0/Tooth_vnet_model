@@ -109,7 +109,12 @@ if __name__ == "__main__":
     net.train()
     for epoch_num in tqdm(range(max_epoch), ncols=70):
         time1 = time.time()
+        print(epoch_num)
         for i_batch, sampled_batch in enumerate(trainloader):
+            
+            print(i_batch)
+            
+            print(sampled_batch)
             time2 = time.time()
             # print('fetch data cost {}'.format(time2-time1))
             volume_batch, offset_batch, offset_skl_batch, label_batch = sampled_batch['image'], sampled_batch['offset_cnt'], sampled_batch['offset_skl'], sampled_batch['label']
