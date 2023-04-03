@@ -173,7 +173,7 @@ if __name__ == "__main__":
         print(trainloader)
         print(len(trainloader))
         # for i_batch, sampled_batch in enumerate(trainloader):
-        for i_batch, sampled_batch in trainloader:
+        for i_batch, sampled_batch in trainloader[:10]:
 
             print(i_batch)
 
