@@ -30,18 +30,18 @@ class toothLoader(Dataset):
         for item in self.image_list:
             images.append(base_dir + item)
         self.image_list = images
-        
-        
-        for item in self.image_list:
-            
-            print(item)
 
     def __len__(self):
         return len(self.image_list)
 
     def __getitem__(self, idx):
         image_name = self.image_list[idx]
+
+        print("adkfljsdklfjlskfjlk")
+        print(image_name)
         h5f = h5py.File(image_name, "r")
+
+        print(h5f)
         image = h5f["image"][:]
         label = h5f["label"][:]
         offset_cnt = h5f["cnt_offset"][:]
