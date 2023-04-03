@@ -128,7 +128,7 @@ if __name__ == "__main__":
         ),
     )
     db_test = toothLoader(
-        base_dir=train_data_path + "/CT_NonCOVID",
+        base_dir=train_data_path + "/CT_NonCOVID/",
         split="test",
         transform=transforms.Compose(
             [

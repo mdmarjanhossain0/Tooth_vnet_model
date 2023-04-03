@@ -64,7 +64,7 @@ if LOCAL:
         "E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/"
     )
 else:
-    train_data_path = "/home/pyuser/Test/Tooth_vnet_model/data_i/"
+    train_data_path = "/home/pyuser/Test/AI/Tooth_vnet_model/data_i/"
 # train_data_path = args.root_path
 snapshot_path = "../model/" + args.exp + "/ours_transformer"
 
@@ -128,7 +128,7 @@ if __name__ == "__main__":
         ),
     )
     db_test = toothLoader(
-        base_dir=train_data_path + "/CT_NonCOVID",
+        base_dir=train_data_path + "/CT_NonCOVID/",
         split="test",
         transform=transforms.Compose(
             [

@@ -26,8 +26,14 @@ class toothLoader(Dataset):
                 self.image_list = f.readlines()
         self.image_list = [item.replace("\n", "") for item in self.image_list]
         print("total {} samples".format(len(self.image_list)))
+        images = []
         for item in self.image_list:
-
+            images.append(base_dir + item)
+        self.image_list = images
+        
+        
+        for item in self.image_list:
+            
             print(item)
 
     def __len__(self):
