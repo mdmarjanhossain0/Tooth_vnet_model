@@ -58,7 +58,7 @@ parser.add_argument("--seed", type=int, default=1337, help="random seed")
 parser.add_argument("--gpu", type=str, default="0", help="GPU to use")
 args = parser.parse_args()
 
-LOCAL = True
+LOCAL = False
 if LOCAL:
     train_data_path = (
         "E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/"
