@@ -23,7 +23,7 @@ from utils.losses import dice_loss
 from dataloaders.toothLoader import toothLoader, RandomCrop, CenterCrop, RandomRotFlip, ToTensor, TwoStreamBatchSampler, LabelCrop, DataScale
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--root_path', type=str, default='E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/', help='Name of Experiment')
+parser.add_argument('--root_path', type=str, default='/home/pyuser/Test/Tooth_vnet_model/data_i', help='Name of Experiment')
 parser.add_argument('--exp', type=str,  default='NC_1st_stage_cntV2_HZ_02_(1000data_256size_intensityClip)', help='model_name')
 parser.add_argument('--max_iterations', type=int,  default=60000, help='maximum epoch number to train')
 parser.add_argument('--batch_size', type=int, default=1, help='batch_size per gpu')
