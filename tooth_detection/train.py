@@ -35,7 +35,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--root_path",
     type=str,
-    default="/home/pyuser/Test/Tooth_vnet_model/data_i/CT_COVID/",
+    default="E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/",
     help="Name of Experiment",
 )
 parser.add_argument(
@@ -58,8 +58,14 @@ parser.add_argument("--seed", type=int, default=1337, help="random seed")
 parser.add_argument("--gpu", type=str, default="0", help="GPU to use")
 args = parser.parse_args()
 
-
-train_data_path = args.root_path
+LOCAL = True
+if LOCAL:
+    train_data_path = (
+        "E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/"
+    )
+else:
+    train_data_path = "/home/pyuser/Test/Tooth_vnet_model/data_i/"
+# train_data_path = args.root_path
 snapshot_path = "../model/" + args.exp + "/ours_transformer"
 
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
@@ -111,7 +117,7 @@ if __name__ == "__main__":
     # net.load_state_dict(torch.load('/u2/home/czm/project_test/CBCT_v2/TMI/model/vnet_annotation/iter_6000.pth'))
 
     db_train = toothLoader(
-        base_dir="/home/pyuser/Test/Tooth_vnet_model/data_i/CT_COVID",
+        base_dir=train_data_path + "/CT_COVID/",
         split="train",
         transform=transforms.Compose(
             [
@@ -122,7 +128,7 @@ if __name__ == "__main__":
         ),
     )
     db_test = toothLoader(
-        base_dir="/home/pyuser/Test/Tooth_vnet_model/data_i/CT_NonCOVID",
+        base_dir=train_data_path + "/CT_NonCOVID",
         split="test",
         transform=transforms.Compose(
             [
@@ -167,16 +173,7 @@ if __name__ == "__main__":
     net.train()
     for epoch_num in tqdm(range(max_epoch), ncols=70):
         time1 = time.time()
-
-        print(time1)
-        print(epoch_num)
-        print(trainloader)
-        print(len(trainloader))
         for i_batch, sampled_batch in enumerate(trainloader):
-
-            print(i_batch)
-
-            print(sampled_batch)
             time2 = time.time()
             # print('fetch data cost {}'.format(time2-time1))
             volume_batch, offset_batch, offset_skl_batch, label_batch = (

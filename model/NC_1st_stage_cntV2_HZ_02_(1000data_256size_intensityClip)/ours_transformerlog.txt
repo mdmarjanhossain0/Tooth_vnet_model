@@ -22,3 +22,6 @@
 [23:23:42.705] Namespace(root_path='E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/', exp='NC_1st_stage_cntV2_HZ_02_(1000data_256size_intensityClip)', max_iterations=60000, batch_size=1, base_lr=0.01, deterministic=1, seed=1337, gpu='0')
 [23:24:28.161] Namespace(root_path='E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/', exp='NC_1st_stage_cntV2_HZ_02_(1000data_256size_intensityClip)', max_iterations=60000, batch_size=1, base_lr=0.01, deterministic=1, seed=1337, gpu='0')
 [23:24:28.345] 349 itertations per epoch
+[21:58:06.188] Namespace(root_path='/home/pyuser/Test/Tooth_vnet_model/data_i/CT_COVID/', exp='NC_1st_stage_cntV2_HZ_02_(1000data_256size_intensityClip)', max_iterations=60000, batch_size=1, base_lr=0.01, deterministic=1, seed=1337, gpu='0')
+[22:02:18.181] Namespace(root_path='E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/', exp='NC_1st_stage_cntV2_HZ_02_(1000data_256size_intensityClip)', max_iterations=60000, batch_size=1, base_lr=0.01, deterministic=1, seed=1337, gpu='0')
+[22:02:18.391] 225 itertations per epoch
