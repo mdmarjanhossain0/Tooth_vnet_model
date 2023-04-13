@@ -35,7 +35,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--root_path",
     type=str,
-    default="E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i/",
+    default="E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/",
     help="Name of Experiment",
 )
 parser.add_argument(
@@ -58,7 +58,7 @@ parser.add_argument("--seed", type=int, default=1337, help="random seed")
 parser.add_argument("--gpu", type=str, default="0", help="GPU to use")
 args = parser.parse_args()
 
-LOCAL = False
+LOCAL = True
 if LOCAL:
     train_data_path = (
         "E:/Marjan/Web/AI/Tooth-and-alveolar-bone-segmentation-from-CBCT/data_i"
@@ -68,6 +68,7 @@ else:
 # train_data_path = args.root_path
 snapshot_path = "../model/" + args.exp + "/ours_transformer"
 
+# os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 batch_size = args.batch_size * len(args.gpu.split(","))
 max_iterations = args.max_iterations
@@ -117,7 +118,7 @@ if __name__ == "__main__":
     # net.load_state_dict(torch.load('/u2/home/czm/project_test/CBCT_v2/TMI/model/vnet_annotation/iter_6000.pth'))
 
     db_train = toothLoader(
-        base_dir=train_data_path + "/CT_COVID/",
+        base_dir=train_data_path + "/img",
         split="train",
         transform=transforms.Compose(
             [
@@ -128,7 +129,7 @@ if __name__ == "__main__":
         ),
     )
     db_test = toothLoader(
-        base_dir=train_data_path + "/CT_NonCOVID/",
+        base_dir=train_data_path + "/label",
         split="test",
         transform=transforms.Compose(
             [
