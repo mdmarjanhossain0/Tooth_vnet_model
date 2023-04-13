@@ -19,10 +19,10 @@ class toothLoader(Dataset):
         self.sample_list = []
         if split == "train":
             print(self._base_dir)
-            with open(self._base_dir + "/input.txt", "r") as f:
+            with open(self._base_dir + "input.txt", "r") as f:
                 self.image_list = f.readlines()
         elif split == "test":
-            with open(self._base_dir + "/label.txt", "r") as f:
+            with open(self._base_dir + "label.txt", "r") as f:
                 self.image_list = f.readlines()
         self.image_list = [item.replace("\n", "") for item in self.image_list]
         print("total {} samples".format(len(self.image_list)))
