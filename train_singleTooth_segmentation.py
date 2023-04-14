@@ -92,7 +92,7 @@ if __name__ == "__main__":
     net.cuda()
     # net.to("cpu")
     # net = torch.nn.DataParallel(net)
-
+    print("start loading data set")
     db_train = singeToothLoader(
         base_dir=train_data_path,
         split="train",
