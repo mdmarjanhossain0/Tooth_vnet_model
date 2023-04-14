@@ -48,8 +48,8 @@ parser.add_argument("--gpu", type=str, default="0", help="GPU to use")
 args = parser.parse_args()
 
 train_data_path = args.root_path + "/data_i/img/"
+snapshot_path = "/../" + args.exp + "/"
 # snapshot_path = "/../" + args.exp + "/"
-snapshot_path = args.exp + "/"
 
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 batch_size = args.batch_size * len(args.gpu.split(","))
