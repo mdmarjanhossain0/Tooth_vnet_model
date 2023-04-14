@@ -25,6 +25,8 @@ class singeToothLoader(Dataset):
         if split == "train":
             with open(base_dir + "input.txt", "r") as f:
                 self.image_list = f.readlines()
+            with open(base_dir + "input.txt", "r") as f:
+                self.label_list = f.readlines()
 
         elif split == "test":
             with open(
@@ -38,6 +40,10 @@ class singeToothLoader(Dataset):
         for item in self.image_list:
             images.append(base_dir + item)
         self.image_list = images
+        images = []
+        for item in self.label_list:
+            images.append(base_dir + item)
+        self.label_list = images
         print("total {} samples".format(len(self.image_list)))
 
     def __len__(self):
@@ -45,6 +51,7 @@ class singeToothLoader(Dataset):
 
     def __getitem__(self, idx):
         image_name = self.image_list[idx]
+        print(image_name)
         h5f = h5py.File(image_name, "r")
         image = h5f["image"][:]
         label = h5f["label"][:]
