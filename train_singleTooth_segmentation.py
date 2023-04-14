@@ -75,9 +75,9 @@ if __name__ == "__main__":
         os.makedirs(snapshot_path)
     if os.path.exists(snapshot_path + "/code"):
         shutil.rmtree(snapshot_path + "/code")
-    shutil.copytree(
-        ".", snapshot_path + "/code", shutil.ignore_patterns([".git", "__pycache__"])
-    )
+    # shutil.copytree(
+    #     ".", snapshot_path + "/code", shutil.ignore_patterns([".git", "__pycache__"])
+    # )
 
     logging.basicConfig(
         filename=snapshot_path + "log.txt",
