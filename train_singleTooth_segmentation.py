@@ -17,9 +17,9 @@ import torch.backends.cudnn as cudnn
 from torch.utils.data import DataLoader
 from torchvision.utils import make_grid
 
-from single_tooth_segmentation.networks.vnet import VNet
-from single_tooth_segmentation.utils.losses import dice_loss
-from single_tooth_segmentation.dataloaders.singeToothLoader import (
+from single_tooth _segmentation.networks.vnet import VNet
+from single_tooth _segmentation.utils.losses import dice_loss
+from single_tooth _segmentation.dataloaders.singeToothLoader import (
     singeToothLoader,
     RandomCrop,
     CenterCrop,
