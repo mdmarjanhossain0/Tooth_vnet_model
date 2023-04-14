@@ -144,6 +144,7 @@ if __name__ == "__main__":
     for epoch_num in tqdm(range(max_epoch), ncols=70):
         time1 = time.time()
         for i_batch, sampled_batch in enumerate(trainloader):
+            print(i_batch)
             time2 = time.time()
             # print('fetch data cost {}'.format(time2-time1))
             volume_batch, label_batch, skeleton_batch, boundary_patch, kp_patch = (
