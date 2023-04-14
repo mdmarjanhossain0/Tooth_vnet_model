@@ -89,8 +89,8 @@ if __name__ == "__main__":
     logging.info(str(args))
 
     net = VNet(n_channels=2, n_classes=2, normalization="batchnorm", has_dropout=True)
-    # net.cuda()
-    net.to("cpu")
+    net.cuda()
+    # net.to("cpu")
     # net = torch.nn.DataParallel(net)
 
     db_train = singeToothLoader(
