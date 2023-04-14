@@ -142,7 +142,7 @@ if __name__ == "__main__":
     max_epoch = max_iterations // len(trainloader) + 1
     lr_ = base_lr
     net.train()
-    for epoch_num in tqdm(range(max_epoch), ncols=70):
+    for epoch_num in tqdm(range(max_epoch), ncols=7):
         time1 = time.time()
         for i_batch, sampled_batch in enumerate(trainloader):
             print(i_batch)
