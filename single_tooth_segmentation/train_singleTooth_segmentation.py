@@ -17,6 +17,7 @@ import torch.backends.cudnn as cudnn
 from torch.utils.data import DataLoader
 from torchvision.utils import make_grid
 
+# from networks.vnet import VNet
 from networks.vnet import VNet
 from utils.losses import dice_loss
 from dataloaders.singeToothLoader import (
@@ -31,12 +32,12 @@ from dataloaders.singeToothLoader import (
 )
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--root_path", type=str, default="../", help="Name of Experiment")
+parser.add_argument("--root_path", type=str, default=".", help="Name of Experiment")
 parser.add_argument("--exp", type=str, default="single_tooth_seg", help="model_name")
 parser.add_argument(
-    "--max_iterations", type=int, default=5, help="maximum epoch number to train"
+    "--max_iterations", type=int, default=6000, help="maximum epoch number to train"
 )
-parser.add_argument("--batch_size", type=int, default=2, help="batch_size per gpu")
+parser.add_argument("--batch_size", type=int, default=6, help="batch_size per gpu")
 parser.add_argument(
     "--base_lr", type=float, default=0.01, help="maximum epoch number to train"
 )
@@ -47,9 +48,8 @@ parser.add_argument("--seed", type=int, default=1337, help="random seed")
 parser.add_argument("--gpu", type=str, default="0", help="GPU to use")
 args = parser.parse_args()
 
-train_data_path = args.root_path + "/data_i/img/"
+train_data_path = args.root_path
 snapshot_path = "/../" + args.exp + "/"
-# snapshot_path = "/../" + args.exp + "/"
 
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 batch_size = args.batch_size * len(args.gpu.split(","))
@@ -89,12 +89,11 @@ if __name__ == "__main__":
     logging.info(str(args))
 
     net = VNet(n_channels=2, n_classes=2, normalization="batchnorm", has_dropout=True)
-    # net.cuda()
-    net.to("cpu")
+    net.cuda()
     # net = torch.nn.DataParallel(net)
 
     db_train = singeToothLoader(
-        base_dir=train_data_path,
+        base_dir="data_i/img/",
         split="train",
         transform=transforms.Compose(
             [
@@ -105,7 +104,7 @@ if __name__ == "__main__":
         ),
     )
     db_test = singeToothLoader(
-        base_dir=train_data_path,
+        base_dir="data_i/label/",
         split="test",
         transform=transforms.Compose([ToTensor()]),
     )
@@ -145,7 +144,6 @@ if __name__ == "__main__":
     for epoch_num in tqdm(range(max_epoch), ncols=70):
         time1 = time.time()
         for i_batch, sampled_batch in enumerate(trainloader):
-            print(i_batch)
             time2 = time.time()
             # print('fetch data cost {}'.format(time2-time1))
             volume_batch, label_batch, skeleton_batch, boundary_patch, kp_patch = (
